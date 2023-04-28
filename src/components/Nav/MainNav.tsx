@@ -1,7 +1,9 @@
 // components/Navbar.tsx
-import React from 'react';
-import Link from 'next/link';
-import { Box, List, ListItem } from '@mui/material';
+import React from "react";
+import Link from "next/link";
+import { Box, List, ListItem, Theme, styled } from "@mui/material";
+import "@/components/Nav/MainNav.module.scss";
+import { ThemeOptions } from "@mui/system";
 
 type NavItem = {
   href: string;
@@ -9,25 +11,27 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { href: '/', label: 'Home' },
-  { href: '/contact', label: 'Contact' },
-  { href: '/services', label: 'Services' },
+  { href: "/", label: "Home" },
+  { href: "/contact", label: "Contact" },
+  { href: "/services", label: "Services" },
 ];
+
+const MenuList = styled(List)(() => ({
+  "@media screen and (max-width: 599px`)": {
+    display: "flex",
+  },
+}));
 
 const Navbar: React.FC = () => {
   return (
-    <Box>
-      <List>
+    <Box className="MainNav">
+      <MenuList className="MainNav__ul">
         {navItems.map((item, index) => (
-          <ListItem key={index}>
-            <Link href={item.href} >
-              
-                {item.label}
-              
-            </Link>
+          <ListItem key={index} className="MainNav__li">
+            <Link href={item.href}>{item.label}</Link>
           </ListItem>
         ))}
-      </List>
+      </MenuList>
     </Box>
   );
 };

@@ -1,0 +1,10 @@
+.MainNav {
+    @media screen and (max-width: 768px) {
+        &__ul {
+            display: flex;   
+        }
+        &__li {
+            display: inline-block
+        }
+    }
+}
