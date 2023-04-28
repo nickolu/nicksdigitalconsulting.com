@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import MainNav from "@/components/Nav/MainNav";
 import { Box, Grid, Typography } from "@mui/material";
+import "@/components/PageTemplates/BasePageTemplate.module.scss";
 
 export default function BasePageTemplate({ children }: PropsWithChildren<{}>) {
   return (
@@ -11,7 +12,13 @@ export default function BasePageTemplate({ children }: PropsWithChildren<{}>) {
           <MainNav />
         </Grid>
         <Grid item sm={6} xs={12}>
-          <Box mt={1.5} component="main">{children}</Box>
+          <Box mt={1.5} className="main" component="main" sx={
+            {
+              '@media screen and (max-width: 599px)': {
+                padding: '0px 16px'
+              }
+            }
+          }>{children}</Box>
         </Grid>
       </Grid>
     </Box>

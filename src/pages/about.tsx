@@ -22,7 +22,7 @@ export default function Home() {
           processes with custom software solutions. As a father of three, I also
           enjoy spending time with my family, playing Dungeons & Dragons, and
           sharing music on my {" "}
-          <Link href="https://tiktok.com/@CunningJams" target="_blank">TikTok</Link>.
+          <Link href="https://tiktok.com/@cunning_jams" target="_blank">TikTok</Link>.
         </Typography>
 
         <Typography>
