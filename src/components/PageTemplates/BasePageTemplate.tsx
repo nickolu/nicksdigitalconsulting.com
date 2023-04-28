@@ -7,10 +7,10 @@ export default function BasePageTemplate({ children }: PropsWithChildren<{}>) {
     <Box>
       <Box p={1} ml={1}><Typography variant="h1">Nick&apos;s Digital Consulting</Typography></Box>
       <Grid container>
-        <Grid item sm={2}>
+        <Grid item xs={12} sm={2}>
           <MainNav />
         </Grid>
-        <Grid item sm={6}>
+        <Grid item sm={6} xs={12}>
           <Box mt={1.5} component="main">{children}</Box>
         </Grid>
       </Grid>
