@@ -17,7 +17,7 @@ const navItems: NavItem[] = [
 ];
 
 const MenuList = styled(List)(() => ({
-  "@media screen and (max-width: 599px`)": {
+  "@media screen and (max-width: 599px)": {
     display: "flex",
   },
 }));
