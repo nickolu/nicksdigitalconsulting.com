@@ -5,6 +5,7 @@ import {
   HumanChatMessage,
   SystemChatMessage,
   AIChatMessage,
+  BaseChatMessage,
 } from "langchain/schema";
 
 const chat = new ChatOpenAI({ temperature: 0 });
@@ -15,13 +16,13 @@ export default function handler(
 ) {
   const { input } = req?.body?.params || { input: "" };
   let inputString = "";
-  console.log('input1', input);
+  console.log("input1", input);
   if (Array.isArray(input)) {
     inputString = input.join("\n ");
   } else {
     inputString = input;
   }
-  console.log('input', inputString);
+  console.log("input", inputString);
   chat
     .call([
       new SystemChatMessage(
@@ -36,14 +37,13 @@ export default function handler(
       new HumanChatMessage("I'd like to find out more about Nick"),
       new AIChatMessage('{"action": "About"}'),
       new HumanChatMessage(inputString),
-      
     ])
     .then((response) => {
-      console.log('response', response);
+      console.log("response", response);
       res.status(200).json(response);
     })
     .catch((error) => {
       console.error(error);
-      res.status(500).end();
+      res.status(200).json(new AIChatMessage('{"action": "Error"}'));
     });
 }

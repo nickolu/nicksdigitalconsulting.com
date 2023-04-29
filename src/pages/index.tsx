@@ -53,6 +53,8 @@ function CurrentSection({ action }: { action: string }) {
       return <AboutSection />;
     case "services":
       return <ServicesSection />;
+    case "error":
+      return <AboutSection />
     default:
       return <RandomSection />;
   }
