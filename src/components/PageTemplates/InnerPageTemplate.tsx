@@ -8,7 +8,7 @@ export default function InnerPageTemplate({
 }: PropsWithChildren<{title: string}>) {
   return (
     <BasePageTemplate>
-      <Typography variant="h1">{title}</Typography>
+      <Typography variant="h5">{title}</Typography>
       <Box>{children}</Box>
     </BasePageTemplate>
   );

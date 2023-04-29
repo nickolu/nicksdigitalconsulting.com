@@ -4,10 +4,7 @@ import Link from "next/link";
 import {
   Box,
   List,
-  ListItem,
-  Theme,
   styled,
-  Link as MuiLink,
 } from "@mui/material";
 import "@/components/Nav/MainNav.module.scss";
 
@@ -47,10 +44,14 @@ const Navbar: React.FC = () => {
               },
               "&:hover": {
                 textDecoration: "underline",
-              }
+              },
             }}
           >
-            <Link style={{'color': 'inherit', 'textDecoration': 'none'}}className="MainNav__Link" href={item.href}>
+            <Link
+              style={{ color: "inherit", textDecoration: "none" }}
+              className="MainNav__Link"
+              href={item.href}
+            >
               {item.label}
             </Link>
           </Box>
