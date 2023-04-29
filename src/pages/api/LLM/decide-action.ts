@@ -28,8 +28,7 @@ export default function handler(
       new SystemChatMessage(
         `You are ActionJSONGeneratorBot, you produce JSON that describes an action a user wants to take. 
         The user say any random thing, and you have to decide the most likely out of a given set of actions 
-        the user wants to take, and output that as JSON. These are the available actions: ["Contact", "About", "Services", "Joke", "Random"].
-        If there is no good match, you should output "Random".`
+        the user wants to take, and output that as JSON. These are the available actions: ["Contact", "About", "Services", "Joke", "Random"].`
       ),
       new HumanChatMessage("I'm just checking out Nick's website"),
       new AIChatMessage('{"action": "Random"}'),
