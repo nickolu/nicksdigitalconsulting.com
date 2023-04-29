@@ -1,10 +1,15 @@
 .MainNav {
-    @media screen and (max-width: 768px) {
-        &__ul {
-            display: flex;   
-        }
-        &__li {
-            display: inline-block
-        }
-    }
+    font-size: .8rem;
+    
 }
+.MainNav__ul {
+    display: flex;   
+}
+.MainNav__li {
+    display: inline-block
+}
+.MainNav__Link {
+    text-decoration: none;
+    color: black;
+}
+    

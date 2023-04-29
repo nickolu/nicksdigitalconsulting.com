@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import InnerPageTemplate from '@/components/PageTemplates/InnerPageTemplate'
+import ContactSection from '@/components/Sections/ContactSection'
 
 export default function Home() {
   return (
@@ -11,8 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <InnerPageTemplate title="Contact">
-        Email: nicksdigitalconsulting@gmail.com<br />
-        Phone: (619) 784-1806
+        <ContactSection />
       </InnerPageTemplate>
     </>
   )
