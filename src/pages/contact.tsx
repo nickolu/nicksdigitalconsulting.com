@@ -11,7 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <InnerPageTemplate title="Contact">
-        Contact
+        Email: nicksdigitalconsulting@gmail.com<br />
+        Phone: (619) 784-1806
       </InnerPageTemplate>
     </>
   )
