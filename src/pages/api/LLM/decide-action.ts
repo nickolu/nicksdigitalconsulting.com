@@ -13,16 +13,15 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  
   const { input } = req?.body?.params || { input: "" };
   let inputString = "";
-  console.log(input)
+  console.log('input1', input);
   if (Array.isArray(input)) {
     inputString = input.join("\n ");
   } else {
     inputString = input;
   }
-  console.log(inputString);
+  console.log('input', inputString);
   chat
     .call([
       new SystemChatMessage(
@@ -37,11 +36,14 @@ export default function handler(
       new HumanChatMessage("I'd like to find out more about Nick"),
       new AIChatMessage('{"action": "About"}'),
       new HumanChatMessage(inputString),
+      
     ])
     .then((response) => {
+      console.log('response', response);
       res.status(200).json(response);
     })
     .catch((error) => {
+      console.error(error);
       res.status(500).end();
     });
 }
