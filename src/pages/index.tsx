@@ -40,6 +40,7 @@ function actionToWelcomeText(action: { action: string }): string {
   switch (action.action) {
     case "contact":
       return "Okay, it sounds like you want to get in touch with Nick";
+    
     default:
       return action.action;
   }
