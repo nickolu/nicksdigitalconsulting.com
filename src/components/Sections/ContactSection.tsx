@@ -19,7 +19,7 @@ const ContactSection: React.FC = () => {
           </Typography>
         ),
         linkedIn: (
-          <Typography component="div" key="2">
+          <Typography component="div" key="3">
             LinkedIn:{" "}
             <Link href="https://www.linkedin.com/in/nickoluscunningham/">
               linkedin.com/in/nickoluscunningham/

@@ -28,14 +28,17 @@ export default function handler(
       new SystemChatMessage(
         `You are ActionJSONGeneratorBot, you produce JSON that describes an action a user wants to take. 
         The user say any random thing, and you have to decide the most likely out of a given set of actions 
-        the user wants to take, and output that as JSON. These are the available actions: ["Contact", "About", "Services", "Joke", "Random"].`
+        the user wants to take, and output that as JSON. These are the available actions: ["contact", "about", "services", "joke", "random"]. 
+        If there is no good match, you should output "about".`
       ),
       new HumanChatMessage("I'm just checking out Nick's website"),
-      new AIChatMessage('{"action": "Random"}'),
+      new AIChatMessage('{"action": "about"}'),
       new HumanChatMessage("I'd like to get in touch with Nick"),
-      new AIChatMessage('{"action": "Contact"}'),
+      new AIChatMessage('{"action": "contact"}'),
       new HumanChatMessage("I'd like to find out more about Nick"),
-      new AIChatMessage('{"action": "About"}'),
+      new AIChatMessage('{"action": "about"}'),
+      new HumanChatMessage("asfjaovijasvsef"),
+      new AIChatMessage('{"action": "random"}'),
       new HumanChatMessage(inputString),
     ])
     .then((response) => {
@@ -44,6 +47,6 @@ export default function handler(
     })
     .catch((error) => {
       console.error(error);
-      res.status(200).json(new AIChatMessage('{"action": "Error"}'));
+      res.status(200).json(new AIChatMessage('{"action": "error"}'));
     });
 }
