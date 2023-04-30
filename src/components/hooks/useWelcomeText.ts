@@ -20,6 +20,7 @@ export default function useWelcomeText() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   async function generateWelcomeText() {
+    setIsLoading(true);
     try {
       const welcomeText = await fetchWelcomeMessage();
       setWelcomeText(welcomeText);

@@ -9,6 +9,8 @@ import useWelcomeText, {
 } from "@/components/hooks/useWelcomeText";
 import useActionDecider from "@/components/hooks/useActionDecider";
 import CurrentSection from "@/components/Sections/CurrentSection";
+import Link from "next/link";
+import AppearingTextWithComponents from "@/components/util/AppearingTextWithComponents";
 
 function getActionBodyText(action: string): string {
   switch (action) {
@@ -84,9 +86,24 @@ function HomePageContent() {
         <CurrentSection action={action} />
       ) : (
         bodyText && (
-          <AppearingText text={bodyText}>
-            {(appearingText) => <Typography>{appearingText}</Typography>}
-          </AppearingText>
+          <Typography>
+            <AppearingTextWithComponents
+              template={bodyText + " {0}"}
+              components={[
+                <Button
+                  key="0"
+                  sx={{ padding: 0, textTransform: "none" }}
+                  variant="text"
+                  onClick={() => {
+                    setBodyText(null);
+                    generateWelcomeText().catch(() => null);
+                  }}
+                >
+                  Refresh
+                </Button>,
+              ]}
+            />
+          </Typography>
         )
       )}
       <Box component="form" display="flex" onSubmit={handleSubmit}>
