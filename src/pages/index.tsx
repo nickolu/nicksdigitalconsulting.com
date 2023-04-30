@@ -30,6 +30,7 @@ function HomePageContent() {
     generateWelcomeText,
     isLoading: isWelcomeMessageLoading,
   } = useWelcomeText();
+
   const {
     action,
     decideAction,
