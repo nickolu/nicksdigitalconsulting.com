@@ -6,20 +6,19 @@ import "@/components/PageTemplates/BasePageTemplate.module.scss";
 export default function BasePageTemplate({ children }: PropsWithChildren<{}>) {
   return (
     <Box>
-      <Box
-        p={1}
-        ml={1}
-        display={"flex"}
-        justifyContent={"center"}
-        flexDirection={"column"}
-        alignItems={"center"}
-        
-      >
-        <Typography variant="h1">Nick&apos;s Digital Consulting</Typography>
-        <MainNav />
-      </Box>
       <Grid container display={"flex"} justifyContent={"center"}>
         <Grid item sm={6} xs={12}>
+          <Box
+            p={1}
+            ml={1}
+            display={"flex"}
+            justifyContent={"center"}
+            flexDirection={"column"}
+            alignItems={"center"}
+          >
+            <Typography variant="h1">Nick&apos;s Digital Consulting</Typography>
+            <MainNav />
+          </Box>
           <Box
             mt={1.5}
             className="main"

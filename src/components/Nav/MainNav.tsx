@@ -1,11 +1,7 @@
 // components/Navbar.tsx
 import React from "react";
 import Link from "next/link";
-import {
-  Box,
-  List,
-  styled,
-} from "@mui/material";
+import { Box } from "@mui/material";
 import "@/components/Nav/MainNav.module.scss";
 
 type NavItem = {
@@ -19,22 +15,21 @@ const navItems: NavItem[] = [
   { href: "/services", label: "Services" },
 ];
 
-const MenuList = styled(List)(() => ({
-  "@media screen and (max-width: 599px)": {
-    display: "flex",
-  },
-}));
-
 const Navbar: React.FC = () => {
   return (
-    <Box className="MainNav" display="flex" justifyContent={"space-between"}>
+    <Box
+      className="MainNav"
+      display="flex"
+      width="100%"
+      justifyContent={"center"}
+    >
       {navItems.map((item, index) => (
-        <Box key={index}>
+        <Box key={index} p={1}>
           <Box
             p={2}
-            mt={-3}
+            mt={-4}
             sx={{
-              fontSize: "0.7rem",
+              fontSize: "0.8rem",
               textDecoration: "none",
               "&:visited": {
                 color: "black",
@@ -44,6 +39,12 @@ const Navbar: React.FC = () => {
               },
               "&:hover": {
                 textDecoration: "underline",
+              },
+              "&:first-child": {
+                paddingLeft: 0,
+              },
+              "&:last-child": {
+                paddingRight: 0,
               },
             }}
           >
