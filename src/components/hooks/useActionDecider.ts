@@ -1,12 +1,12 @@
-import axios from "axios";
-import { useState } from "react";
+import axios from 'axios';
+import {useState} from 'react';
 
 async function fetchDecideAction(input: string, actions: string[]) {
   const apiUrl = `/api/LLM/decide-action`;
 
   try {
-    const response = await axios.post(apiUrl, { params: { input, actions } });
-    return JSON.parse(response?.data?.text?.toLowerCase())?.action || "";
+    const response = await axios.post(apiUrl, {params: {input, actions}});
+    return JSON.parse(response?.data?.text?.toLowerCase())?.action || '';
   } catch (error) {
     console.error(error);
     throw error;
@@ -14,7 +14,7 @@ async function fetchDecideAction(input: string, actions: string[]) {
 }
 
 export default function useActionDecider() {
-  const [action, setAction] = useState<string>("");
+  const [action, setAction] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function decideAction(input: string, actions: string[]): Promise<void> {
@@ -24,10 +24,10 @@ export default function useActionDecider() {
       setAction(action);
       setIsLoading(false);
     } catch (error) {
-      setAction("error");
+      setAction('error');
       setIsLoading(false);
     }
   }
 
-  return { action, decideAction, isLoading };
+  return {action, decideAction, isLoading};
 }

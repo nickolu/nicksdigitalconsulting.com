@@ -1,0 +1,46 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "html.format.indentHandlebars": true,
+        "workbench.colorCustomizations": {
+            "activityBar.background": "#efefef",
+            "activityBar.foreground": "#000000",
+            "titleBar.activeBackground": "#efefef",
+            "titleBar.activeForeground": "#000000"
+        },
+        "prettier.prettierPath": "node_modules/prettier",
+        "javascript.validate.enable": false,
+        "emmet.triggerExpansionOnTab": false,
+        "emmet.showExpandedAbbreviation": "never",
+        "[graphql]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascriptreact]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[yaml]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[xml]": {
+            "editor.defaultFormatter": "redhat.vscode-xml"
+        }
+    }
+}

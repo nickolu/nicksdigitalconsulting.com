@@ -11,13 +11,13 @@ const ServicesSection: React.FC = () => {
       components={[
         <Typography key="1">
           <AppearingText
-            text="My primary goal is to help businesses adapt to the changing world as
-          AI becomes more prevalent. But beyond that, I can use AI and software
+            text="Nick's primary goal is to help businesses adapt to the changing world as
+          AI becomes more prevalent. But beyond that, he can use AI and software
           to solve just about any problem."
           />
         </Typography>,
         <Typography key="2">
-          <AppearingText text="Some of the most common things I do for clients are as follows:" />
+          <AppearingText text="Some of the most common things he does for clients are as follows:" />
         </Typography>,
         <Typography key="3" component="ul">
           <AppearingTextWithComponents

@@ -1,8 +1,7 @@
-// components/Navbar.tsx
-import React from "react";
-import Link from "next/link";
-import { Box } from "@mui/material";
-import "@/components/Nav/MainNav.module.scss";
+import React from 'react';
+import Link from 'next/link';
+import {Box} from '@mui/material';
+import '@/components/Nav/MainNav.module.scss';
 
 type NavItem = {
   href: string;
@@ -10,18 +9,18 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { href: "/", label: "Home" },
-  { href: "/contact", label: "Contact" },
-  { href: "/services", label: "Services" },
+  {href: '/', label: 'Home'},
+  {href: '/contact', label: 'Contact'},
+  {href: '/services', label: 'Services'},
 ];
 
-const Navbar: React.FC = () => {
+const MainNav = ({onHomeClick}: {onHomeClick?: () => void}) => {
   return (
     <Box
       className="MainNav"
       display="flex"
       width="100%"
-      justifyContent={"center"}
+      justifyContent={'center'}
     >
       {navItems.map((item, index) => (
         <Box key={index} p={1}>
@@ -29,29 +28,35 @@ const Navbar: React.FC = () => {
             p={2}
             mt={-4}
             sx={{
-              fontSize: "0.8rem",
-              textDecoration: "none",
-              "&:visited": {
-                color: "black",
+              fontSize: '0.8rem',
+              textDecoration: 'none',
+              '&:visited': {
+                color: 'black',
               },
-              "&:active": {
-                color: "black",
+              '&:active': {
+                color: 'black',
               },
-              "&:hover": {
-                textDecoration: "underline",
+              '&:hover': {
+                textDecoration: 'underline',
               },
-              "&:first-child": {
+              '&:first-child': {
                 paddingLeft: 0,
               },
-              "&:last-child": {
+              '&:last-child': {
                 paddingRight: 0,
               },
             }}
           >
             <Link
-              style={{ color: "inherit", textDecoration: "none" }}
+              style={{color: 'inherit', textDecoration: 'none'}}
               className="MainNav__Link"
               href={item.href}
+              onClick={(e) => {
+                if (item.href === '/' && onHomeClick) {
+                  e.preventDefault();
+                  onHomeClick();
+                }
+              }}
             >
               {item.label}
             </Link>
@@ -62,4 +67,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default MainNav;

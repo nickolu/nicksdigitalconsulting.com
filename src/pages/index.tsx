@@ -1,21 +1,19 @@
-import Head from "next/head";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
-import HomePageTemplate from "@/components/PageTemplates/HomePageTemplate";
-import AppearingText from "@/components/util/AppearingText";
-import PageLoadingSpinner from "@/components/Loaders/PageLoadingSpinner";
+import Head from 'next/head';
+import {Box, Button, TextField, Typography} from '@mui/material';
+import {useCallback, useEffect, useState} from 'react';
+import PageLoadingSpinner from '@/components/Loaders/PageLoadingSpinner';
 import useWelcomeText, {
   defaultWelcomeMessage,
-} from "@/components/hooks/useWelcomeText";
-import useActionDecider from "@/components/hooks/useActionDecider";
-import CurrentSection from "@/components/Sections/CurrentSection";
-import Link from "next/link";
-import AppearingTextWithComponents from "@/components/util/AppearingTextWithComponents";
+} from '@/components/hooks/useWelcomeText';
+import useActionDecider from '@/components/hooks/useActionDecider';
+import CurrentSection from '@/components/Sections/CurrentSection';
+import AppearingTextWithComponents from '@/components/util/AppearingTextWithComponents';
+import BasePageTemplate from '@/components/PageTemplates/BasePageTemplate';
 
 function getActionBodyText(action: string): string {
   switch (action) {
-    case "contact":
-      return "Okay, it sounds like you want to get in touch with Nick";
+    case 'contact':
+      return 'Okay, it sounds like you want to get in touch with Nick';
 
     default:
       return action;
@@ -23,8 +21,10 @@ function getActionBodyText(action: string): string {
 }
 
 function HomePageContent() {
-  const [textFieldValue, setTextFieldValue] = useState<string>("");
+  const [textFieldValue, setTextFieldValue] = useState<string>('');
+  const [userMessage, setUserMessage] = useState<string>('');
   const [bodyText, setBodyText] = useState<string | null>(null);
+
   const {
     welcomeText,
     generateWelcomeText,
@@ -57,20 +57,21 @@ function HomePageContent() {
   }, [action]);
 
   const handleSubmit = useCallback(
-    (e: { preventDefault: () => void }) => {
+    (e: {preventDefault: () => void}) => {
       e.preventDefault();
+      setUserMessage(textFieldValue);
       try {
         decideAction(textFieldValue, [
-          "contact",
-          "about",
-          "services",
-          "random",
+          'contact',
+          'about',
+          'services',
+          'random',
         ]);
       } catch (e) {
         setBodyText(defaultWelcomeMessage);
       }
     },
-    [textFieldValue, decideAction]
+    [textFieldValue, decideAction, setUserMessage]
   );
 
   if (isWelcomeMessageLoading) {
@@ -83,17 +84,32 @@ function HomePageContent() {
 
   return (
     <>
+      {userMessage && (
+        <Box
+          className="info-box"
+          sx={{
+            border: '1px solid #777',
+            color: '#777',
+            borderRadius: '5px',
+            padding: '16px',
+            marginBottom: '1rem',
+            backgroundColor: '#fefefe',
+          }}
+        >
+          <Typography component="span">&ldquo;{userMessage}&rdquo;</Typography>
+        </Box>
+      )}
       {action ? (
         <CurrentSection action={action} />
       ) : (
         bodyText && (
           <Typography>
             <AppearingTextWithComponents
-              template={bodyText + " {0}"}
+              template={bodyText + ' {0}'}
               components={[
                 <Button
                   key="0"
-                  sx={{ padding: 0, textTransform: "none" }}
+                  sx={{padding: 0, textTransform: 'none'}}
                   variant="text"
                   onClick={() => {
                     setBodyText(null);
@@ -107,10 +123,10 @@ function HomePageContent() {
           </Typography>
         )
       )}
-      <Box component="form" display="flex" onSubmit={handleSubmit}>
+      <Box mt={4} component="form" display="flex" onSubmit={handleSubmit}>
         <Box mr={1} width="100%">
           <TextField
-            sx={{ width: "100%" }}
+            sx={{width: '100%'}}
             onChange={(e) => setTextFieldValue(e.target.value)}
           />
         </Box>
@@ -133,9 +149,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomePageTemplate>
+      <BasePageTemplate
+        onHomeClick={() => {
+          window.location.reload();
+        }}
+      >
         <HomePageContent />
-      </HomePageTemplate>
+      </BasePageTemplate>
     </>
   );
 }
