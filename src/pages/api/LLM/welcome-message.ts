@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
-import { ChatOpenAI } from "langchain/chat_models/openai";
-import { HumanChatMessage, SystemChatMessage } from "langchain/schema";
+import type {NextApiRequest, NextApiResponse} from 'next';
+import {ChatOpenAI} from 'langchain/chat_models/openai';
+import {HumanChatMessage, SystemChatMessage} from 'langchain/schema';
 
-const chat = new ChatOpenAI({ temperature: 0.4 });
+const chat = new ChatOpenAI({temperature: 0.4});
 
 export default function handler(
   req: NextApiRequest,
@@ -22,7 +22,7 @@ export default function handler(
       res.status(200).json(response);
     })
     .catch((error) => {
-      console.error(error)
+      console.error(error);
       res.status(500).end();
     });
 }

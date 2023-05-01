@@ -1,6 +1,6 @@
-import { Box, Typography } from "@mui/material";
-import BasePageTemplate from "./BasePageTemplate";
-import { PropsWithChildren } from "react";
+import {Box, Typography} from '@mui/material';
+import BasePageTemplate from './BasePageTemplate';
+import {PropsWithChildren} from 'react';
 
 export default function InnerPageTemplate({
   children,

@@ -1,6 +1,6 @@
-import AppearingText from "./AppearingText";
-import InsertComponentsInTemplate from "./InsertComponentsInTemplate";
-import { ComponentsMap } from "./types";
+import AppearingText from './AppearingText';
+import InsertComponentsInTemplate from './InsertComponentsInTemplate';
+import {ComponentsMap} from './types';
 
 const AppearingTextWithComponents = ({
   template,
@@ -13,7 +13,7 @@ const AppearingTextWithComponents = ({
   AppearingTextProps?: {
     initialDelayInMs?: number;
     intervalInMs?: number;
-  }
+  };
 }) => {
   if (Array.isArray(components)) {
     if (!template) {
@@ -28,10 +28,7 @@ const AppearingTextWithComponents = ({
 
   return (
     <>
-      <AppearingText
-        text={template}
-        {...AppearingTextProps}
-      >
+      <AppearingText text={template} {...AppearingTextProps}>
         {(appearingText) => {
           return (
             <InsertComponentsInTemplate
@@ -49,7 +46,7 @@ function createComponentsArrayTemplate(components: JSX.Element[]) {
   return (components as JSX.Element[]).reduce((acc, _, i) => {
     acc += `{${i}} `;
     return acc;
-  }, "");
+  }, '');
 }
 
 function componentsArrayToComponentsMap(components: JSX.Element[]) {

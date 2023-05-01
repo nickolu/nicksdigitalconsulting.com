@@ -1,23 +1,23 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
-import { ChatOpenAI } from "langchain/chat_models/openai";
+import type {NextApiRequest, NextApiResponse} from 'next';
+import {ChatOpenAI} from 'langchain/chat_models/openai';
 import {
   HumanChatMessage,
   SystemChatMessage,
   AIChatMessage,
-} from "langchain/schema";
+} from 'langchain/schema';
 
-const chat = new ChatOpenAI({ temperature: 0 });
+const chat = new ChatOpenAI({temperature: 0});
 
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  const { input, actions } = req?.body?.params || { input: "", actions: [""] };
-  let inputString = "";
+  const {input, actions} = req?.body?.params || {input: '', actions: ['']};
+  let inputString = '';
 
   if (Array.isArray(input)) {
-    inputString = input.join("\n ");
+    inputString = input.join('\n ');
   } else {
     inputString = input;
   }
@@ -27,9 +27,9 @@ export default function handler(
     return;
   }
 
-  const actionsString = actions.join(", ");
+  const actionsString = actions.join(', ');
   console.log(
-    "deciding action for query",
+    'deciding action for query',
     `actions: ${actionsString}`,
     `input: ${inputString.substring(0, 20)}`
   );
@@ -45,16 +45,16 @@ export default function handler(
       new AIChatMessage('{"action": "about"}'),
       new HumanChatMessage("I'd like to get in touch with Nick"),
       new AIChatMessage('{"action": "contact"}'),
-      new HumanChatMessage("Phone number?"),
+      new HumanChatMessage('Phone number?'),
       new AIChatMessage('{"action": "contact"}'),
       new HumanChatMessage("I'd like to find out more about Nick"),
       new AIChatMessage('{"action": "about"}'),
-      new HumanChatMessage("asfjaovijasvsef"),
+      new HumanChatMessage('asfjaovijasvsef'),
       new AIChatMessage(`{"action": "${actions[0]}"}`),
       new HumanChatMessage(inputString),
     ])
     .then((response) => {
-      console.log("decide-action response:", response);
+      console.log('decide-action response:', response);
       res.status(200).json(response);
     })
     .catch((error) => {

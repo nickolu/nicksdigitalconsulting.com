@@ -1,8 +1,8 @@
-import Head from "next/head";
-import InnerPageTemplate from "@/components/PageTemplates/InnerPageTemplate";
-import { List, ListItem, Typography } from "@mui/material";
-import Link from "next/link";
-import ServicesSection from "@/components/Sections/ServicesSection";
+import Head from 'next/head';
+import InnerPageTemplate from '@/components/PageTemplates/InnerPageTemplate';
+import {List, ListItem, Typography} from '@mui/material';
+import Link from 'next/link';
+import ServicesSection from '@/components/Sections/ServicesSection';
 
 export default function Home() {
   return (
