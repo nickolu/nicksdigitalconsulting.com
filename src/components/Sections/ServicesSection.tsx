@@ -1,13 +1,13 @@
-import { Typography } from "@mui/material";
-import Link from "next/link";
-import AppearingTextWithComponents from "../util/AppearingTextWithComponents";
-import AppearingText from "../util/AppearingText";
-import App from "@/pages/_app";
+import {Typography} from '@mui/material';
+import Link from 'next/link';
+import AppearingTextWithComponents from '../util/AppearingTextWithComponents';
+import AppearingText from '../util/AppearingText';
+import App from '@/pages/_app';
 
 const ServicesSection: React.FC = () => {
   return (
     <AppearingTextWithComponents
-      AppearingTextProps={{ intervalInMs: 2000 }}
+      AppearingTextProps={{intervalInMs: 2000}}
       components={[
         <Typography key="1">
           <AppearingText
@@ -21,7 +21,7 @@ const ServicesSection: React.FC = () => {
         </Typography>,
         <Typography key="3" component="ul">
           <AppearingTextWithComponents
-            AppearingTextProps={{ intervalInMs: 500 }}
+            AppearingTextProps={{intervalInMs: 500}}
             components={[
               <li key="0">
                 <AppearingText text="Train how to use tools like ChatGPT and other AI tools effectively" />
@@ -33,7 +33,7 @@ const ServicesSection: React.FC = () => {
                   components={[
                     <Link
                       key="examples-link"
-                      style={{ display: "inline" }}
+                      style={{display: 'inline'}}
                       href="#"
                     >
                       examples

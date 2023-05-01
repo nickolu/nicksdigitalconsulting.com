@@ -6,7 +6,7 @@ import '@/components/PageTemplates/BasePageTemplate.module.scss';
 export default function BasePageTemplate({
   children,
   onHomeClick,
-}: PropsWithChildren<{onHomeClick: () => void}>) {
+}: PropsWithChildren<{onHomeClick?: () => void}>) {
   return (
     <Box>
       <Grid container display={'flex'} justifyContent={'center'}>

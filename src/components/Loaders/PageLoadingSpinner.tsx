@@ -1,4 +1,4 @@
-import { CircularProgress, Box, Typography } from "@mui/material";
+import {CircularProgress, Box, Typography} from '@mui/material';
 
 const PageLoadingSpinner = () => {
   return (

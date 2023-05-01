@@ -1,12 +1,12 @@
-import { Typography } from "@mui/material";
-import AppearingTextWithComponents from "../util/AppearingTextWithComponents";
-import Link from "next/link";
-import AppearingText from "../util/AppearingText";
+import {Typography} from '@mui/material';
+import AppearingTextWithComponents from '../util/AppearingTextWithComponents';
+import Link from 'next/link';
+import AppearingText from '../util/AppearingText';
 
 const ContactSection: React.FC = () => {
   return (
     <AppearingTextWithComponents
-      AppearingTextProps={{ initialDelayInMs: 500, intervalInMs: 80 }}
+      AppearingTextProps={{initialDelayInMs: 500, intervalInMs: 80}}
       template="{bodyText} {email} {phone} {linkedIn}"
       components={{
         bodyText: (
@@ -26,7 +26,7 @@ const ContactSection: React.FC = () => {
         ),
         linkedIn: (
           <Typography component="div" key="3">
-            LinkedIn:{" "}
+            LinkedIn:{' '}
             <Link href="https://www.linkedin.com/in/nickoluscunningham/">
               linkedin.com/in/nickoluscunningham/
             </Link>

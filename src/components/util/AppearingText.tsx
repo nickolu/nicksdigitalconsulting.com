@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import {useEffect, useRef, useState} from 'react';
 
 const AppearingText = ({
   text,
@@ -11,7 +11,7 @@ const AppearingText = ({
   initialDelayInMs?: number;
   children?: (text: string) => JSX.Element;
 }) => {
-  const words = text.split(" ");
+  const words = text.split(' ');
   const [currentText, setCurrentText] = useState<string>(words[0]);
   const intervalRef = useRef<number | null>(null);
   const initialTimeoutRef = useRef<number | null>(null);
@@ -21,10 +21,10 @@ const AppearingText = ({
 
     function setInterval() {
       intervalRef.current = window.setInterval(() => {
-        const currentWords = currentText.split(" ");
+        const currentWords = currentText.split(' ');
         const currentWordCount = currentWords.length;
         if (currentWordCount === words.length) {
-          console.log("done", currentText);
+          console.log('done', currentText);
           window.clearInterval(intervalRef.current as number);
           return;
         }

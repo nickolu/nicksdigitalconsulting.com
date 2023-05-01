@@ -1,8 +1,8 @@
-import Head from "next/head";
-import InnerPageTemplate from "@/components/PageTemplates/InnerPageTemplate";
-import { Typography } from "@mui/material";
-import Link from "next/link";
-import AboutSection from "@/components/Sections/AboutSection";
+import Head from 'next/head';
+import InnerPageTemplate from '@/components/PageTemplates/InnerPageTemplate';
+import {Typography} from '@mui/material';
+import Link from 'next/link';
+import AboutSection from '@/components/Sections/AboutSection';
 
 export default function Home() {
   return (
