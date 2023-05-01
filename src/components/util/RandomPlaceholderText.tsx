@@ -30,7 +30,7 @@ function RandomPlaceholderText({onClick}: {onClick?: () => void}) {
 
     const interval = window.setInterval(() => {
       setCurrentText(randomPlaceholderText());
-    }, 6000);
+    }, 5000);
 
     return () => {
       clearInterval(interval);
