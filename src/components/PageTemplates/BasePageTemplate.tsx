@@ -12,12 +12,10 @@ export default function BasePageTemplate({
       <Grid container display={'flex'} justifyContent={'center'}>
         <Grid item sm={6} xs={12}>
           <Box
-            p={1}
-            ml={1}
             display={'flex'}
             justifyContent={'center'}
             flexDirection={'column'}
-            alignItems={'center'}
+            alignItems={'flex-start'}
           >
             <Typography variant="h1">Nick&apos;s Digital Consulting</Typography>
             <MainNav onHomeClick={onHomeClick} />

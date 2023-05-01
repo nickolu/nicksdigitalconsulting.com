@@ -20,10 +20,10 @@ const MainNav = ({onHomeClick}: {onHomeClick?: () => void}) => {
       className="MainNav"
       display="flex"
       width="100%"
-      justifyContent={'center'}
+      justifyContent="flex-start"
     >
       {navItems.map((item, index) => (
-        <Box key={index} p={1}>
+        <Box key={index} pr={1}>
           <Box
             p={2}
             mt={-4}
