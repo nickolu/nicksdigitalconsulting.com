@@ -1,18 +1,19 @@
 Here are some projects to include:
 
+
 Software:
-Rev:
-SDP
-Bullseye
-PopulationVisualizer
-Automation Stack
-Freelance:
-ChatGPT Conversation Manager
-GPT Web Page Translator
+    Rev:
+        SDP
+        Bullseye
+        PopulationVisualizer
+        Automation Stack
+    Freelance:
+        ChatGPT Conversation Manager
+        GPT Web Page Translator
 
 Websites:
-Omedix:
-shobgyn.com
+    Omedix:
+        shobgyn.com
 
     Thorncrest:
         Thorn-crest.com
@@ -30,11 +31,13 @@ shobgyn.com
         BestSanDiegoWedding.com (defunct)
 
 Photograpy:
-Weddings:
-Misc Weddings
-Product
-Misc Product
+    Weddings:
+        Misc Weddings
+    Product
+        Misc Product
+
 
 Design.
-Design:
-Misc Design
+    Design:
+        Misc Design
+
