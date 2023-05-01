@@ -1,6 +1,12 @@
 import Head from 'next/head';
-import {Box, Button, TextField, Typography} from '@mui/material';
-import {useCallback, useEffect, useState} from 'react';
+import {
+  Box,
+  Button,
+  InputAdornment,
+  TextField,
+  Typography,
+} from '@mui/material';
+import React, {useCallback, useEffect, useState} from 'react';
 import PageLoadingSpinner from '@/components/Loaders/PageLoadingSpinner';
 import useWelcomeText, {
   defaultWelcomeMessage,
@@ -9,6 +15,7 @@ import useActionDecider from '@/components/hooks/useActionDecider';
 import CurrentSection from '@/components/Sections/CurrentSection';
 import AppearingTextWithComponents from '@/components/util/AppearingTextWithComponents';
 import BasePageTemplate from '@/components/PageTemplates/BasePageTemplate';
+import RandomPlaceholderText from '@/components/util/RandomPlaceholderText';
 
 function getActionBodyText(action: string): string {
   switch (action) {
@@ -24,6 +31,7 @@ function HomePageContent() {
   const [textFieldValue, setTextFieldValue] = useState<string>('');
   const [userMessage, setUserMessage] = useState<string>('');
   const [bodyText, setBodyText] = useState<string | null>(null);
+  const inputRef = React.createRef<HTMLInputElement>();
 
   const {
     welcomeText,
@@ -55,6 +63,13 @@ function HomePageContent() {
       setBodyText(actionText);
     }
   }, [action]);
+
+  const handlePlaceholderClick = () => {
+    if (inputRef.current) {
+      setTextFieldValue(' ');
+      inputRef.current.focus();
+    }
+  };
 
   const handleSubmit = useCallback(
     (e: {preventDefault: () => void}) => {
@@ -88,12 +103,9 @@ function HomePageContent() {
         <Box
           className="info-box"
           sx={{
-            border: '1px solid #777',
             color: '#777',
-            borderRadius: '5px',
-            padding: '16px',
+            // padding: '16px 0',
             marginBottom: '1rem',
-            backgroundColor: '#fefefe',
           }}
         >
           <Typography component="span">&ldquo;{userMessage}&rdquo;</Typography>
@@ -124,10 +136,34 @@ function HomePageContent() {
         )
       )}
       <Box mt={4} component="form" display="flex" onSubmit={handleSubmit}>
-        <Box mr={1} width="100%">
+        <Box
+          mr={1}
+          width="100%"
+          sx={{
+            position: 'relative',
+          }}
+        >
           <TextField
-            sx={{width: '100%'}}
+            inputRef={inputRef}
+            sx={{width: '100%', '& .MuiInputBase-root': {overflow: 'hidden'}}}
             onChange={(e) => setTextFieldValue(e.target.value)}
+            onFocus={() => {
+              if (!textFieldValue) {
+                setTextFieldValue(' ');
+              }
+            }}
+            onBlur={
+              textFieldValue === ' ' ? () => setTextFieldValue('') : undefined
+            }
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  {!textFieldValue && (
+                    <RandomPlaceholderText onClick={handlePlaceholderClick} />
+                  )}
+                </InputAdornment>
+              ),
+            }}
           />
         </Box>
         <Button type="submit">Submit</Button>

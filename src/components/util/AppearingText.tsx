@@ -1,47 +1,82 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 const AppearingText = ({
-  text,
   children,
-  intervalInMs = 40,
   initialDelayInMs = 0,
+  intervalInMs = 40,
+  onComplete = () => null,
+  splitCharacter = ' ',
+  text,
 }: {
-  text: string;
-  intervalInMs?: number;
+  children?: string | ((text: string) => JSX.Element);
   initialDelayInMs?: number;
-  children?: (text: string) => JSX.Element;
+  intervalInMs?: number;
+  onComplete?: () => void;
+  splitCharacter?: string;
+  text?: string;
 }) => {
-  const words = text.split(' ');
-  const [currentText, setCurrentText] = useState<string>(words[0]);
+  if (typeof children === 'string') {
+    text = children as string;
+    children = (text: string) => <>{text}</>;
+  }
+
+  if (!text) {
+    throw new Error('AppearingText requires a text prop');
+  }
+
+  const words = text.split(splitCharacter);
+  const [currentText, setCurrentText] = useState<string>('');
+  const [hasInitialDelayCompleted, setHasInitialDelayCompleted] =
+    useState<boolean>(false);
   const intervalRef = useRef<number | null>(null);
   const initialTimeoutRef = useRef<number | null>(null);
+
+  const setInterval = useCallback(() => {
+    intervalRef.current = window.setInterval(() => {
+      if (!currentText && words?.length > 0) {
+        setCurrentText(words[0]);
+        return;
+      }
+      const currentWords = currentText.split(splitCharacter);
+      const currentWordCount = currentWords.length;
+
+      if (currentWordCount === words.length) {
+        onComplete();
+        window.clearInterval(intervalRef.current as number);
+        return;
+      }
+      setCurrentText(
+        `${currentText}${splitCharacter}${words[currentWordCount]}`
+      );
+    }, intervalInMs);
+  }, [currentText, intervalInMs, onComplete, splitCharacter, words]);
+
+  useEffect(() => {
+    if (hasInitialDelayCompleted) {
+      setInterval();
+    }
+  }, [hasInitialDelayCompleted, setInterval]);
 
   useEffect(() => {
     if (!window) return;
 
-    function setInterval() {
-      intervalRef.current = window.setInterval(() => {
-        const currentWords = currentText.split(' ');
-        const currentWordCount = currentWords.length;
-        if (currentWordCount === words.length) {
-          console.log('done', currentText);
-          window.clearInterval(intervalRef.current as number);
-          return;
-        }
-        setCurrentText(`${currentText} ${words[currentWordCount]}`);
-      }, intervalInMs);
-    }
-
-    initialTimeoutRef.current = window.setTimeout(
-      setInterval,
-      initialDelayInMs
-    );
+    initialTimeoutRef.current = window.setTimeout(() => {
+      setHasInitialDelayCompleted(true);
+    }, initialDelayInMs);
 
     return () => {
       window.clearTimeout(initialTimeoutRef.current as number);
       window.clearInterval(intervalRef.current as number);
     };
-  }, [currentText, text, intervalInMs, words, initialDelayInMs]);
+  }, [
+    currentText,
+    initialDelayInMs,
+    intervalInMs,
+    onComplete,
+    splitCharacter,
+    text,
+    words,
+  ]);
 
   return <>{children ? children(currentText) : currentText}</>;
 };
