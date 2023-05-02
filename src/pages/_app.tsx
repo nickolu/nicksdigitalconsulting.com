@@ -13,7 +13,7 @@ export default function App({Component, pageProps}: AppProps) {
       <Component {...pageProps} />
       <div>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"
+          src={`https://www.googletagmanager.com/gtag/js?id${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
